@@ -14,7 +14,7 @@ st.image(
 )
 
 st.title("Laptop Price Prediction")
-st.write("Machine learning–based laptop price estimator")
+st.write("Machine learning–based laptop price estimator by Ayush Anand (XGBoost Model)")
 
 with open("xgb_model.pkl", "rb") as f:
     model = pickle.load(f)
@@ -113,3 +113,4 @@ if st.button("Predict Price"):
     predicted_price = model.predict(X_final)[0]
 
     st.success(f"Predicted Laptop Price: {predicted_price:.2f}")
+
