@@ -16,19 +16,19 @@ st.image(
 st.title("Laptop Price Prediction")
 st.write("Machine learning–based laptop price estimator")
 
-with open("artifacts/xgb_model.pkl", "rb") as f:
+with open("xgb_model.pkl", "rb") as f:
     model = pickle.load(f)
 
-with open("artifacts/scaler.pkl", "rb") as f:
+with open("scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
 
-with open("artifacts/onehot_encoder.pkl", "rb") as f:
+with open("onehot_encoder.pkl", "rb") as f:
     onehot = pickle.load(f)
 
-with open("artifacts/mlb_transformers.pkl", "rb") as f:
+with open("mlb_transformers.pkl", "rb") as f:
     mlb_transformers = pickle.load(f)
 
-with open("artifacts/feature_metadata.pkl", "rb") as f:
+with open("feature_metadata.pkl", "rb") as f:
     meta = pickle.load(f)
 
 numeric_features = meta["numeric_features"]
@@ -111,4 +111,5 @@ if st.button("Predict Price"):
 
     X_final = np.hstack([X_num, X_cat, X_list])
     predicted_price = model.predict(X_final)[0]
+
     st.success(f"Predicted Laptop Price: {predicted_price:.2f}")
